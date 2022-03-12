@@ -31,4 +31,8 @@ public class ListObject {
 		return linecount;
 	}
 	
+	public String toString() {
+		return list.toString();
+	}
+	
 }
