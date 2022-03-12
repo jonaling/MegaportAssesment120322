@@ -2,21 +2,17 @@ package org.jling.megaport.MegaportSort;
 
 import java.util.ArrayList;
 
-public abstract class SortingAlgorithm {
-	private int lineCount;
-	private double timeTaken;
-	private ArrayList<String> list;
+public interface SortingAlgorithm {
 	
-	public ArrayList<String> Sort(){
+	
+	public default ListObject Sort(ListObject list){
 		return list;
 	}
 	
-	public int GetLineCount() {
-		return lineCount;
-	}
 	
-	public double GetTimeTaken() {
-		return timeTaken;
+	public default double GetTimeTaken(ArrayList<String> list) {
+		double ttaken =0.0;
+		return ttaken;
 	}
 	
 }
