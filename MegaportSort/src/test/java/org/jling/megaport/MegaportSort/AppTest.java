@@ -19,6 +19,24 @@ public class AppTest
     {
         super( testName );
     }
+    
+    //test response for no file
+    public void NoFileTest() {
+    	
+    }
+    
+    //test response for demo file using collection sort
+    public void DemoFileCollectionSort() {
+    	
+    }
+    
+    //test response for demo file using quick-sort
+    public void DemoFileQuickSort() {
+    	
+    }
+    
+    
+    
 
     /**
      * @return the suite of tests being tested
