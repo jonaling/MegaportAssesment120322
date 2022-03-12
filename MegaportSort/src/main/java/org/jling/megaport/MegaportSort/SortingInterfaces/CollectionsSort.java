@@ -1,7 +1,9 @@
-package org.jling.megaport.MegaportSort;
+package org.jling.megaport.MegaportSort.SortingInterfaces;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import org.jling.megaport.MegaportSort.ListObject;
 
 public interface CollectionsSort extends SortingAlgorithm {
 	
