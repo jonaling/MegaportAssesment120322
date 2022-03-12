@@ -38,12 +38,20 @@ public class App
         	String algo = args[0];
         	for (int i = 1; i< count; i++ ) {
         		listobj= ListObjectReader(args[i]);
+        		filename = GetFileName(args[i])+"-sorted.txt";
+            	
+            	//System.out.println(listobj.toString());
+            	ListObjectPrinter(listobj,filename);
         		
         	}
         	
         //for one, default sort algorithm will be used.
         }else {
         	listobj= ListObjectReader(args[0]);
+        	filename = GetFileName(args[0])+"-sorted.txt";
+        	
+        	//System.out.println(listobj.toString());
+        	ListObjectPrinter(listobj,filename);
         }
         
         
@@ -57,12 +65,12 @@ public class App
     	if(dirLength>0) {
     		currName = dirArray[dirArray.length -1];
     		dirArray= currName.split(".txt");
-    		currName = dirArray[0];
+    		currName = dirArray[0].trim();
 
     	}else {
     		currName= dir;
     		dirArray= currName.split(".txt");
-    		currName = dirArray[0];
+    		currName = dirArray[0].trim();
     	}
     	return currName;
     }

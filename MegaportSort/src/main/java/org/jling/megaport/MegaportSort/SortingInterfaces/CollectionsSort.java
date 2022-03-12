@@ -5,13 +5,13 @@ import java.util.Collections;
 
 import org.jling.megaport.MegaportSort.ListObject;
 
-public interface CollectionsSort extends SortingAlgorithm {
+public class CollectionsSort implements SortingAlgorithm {
 	
 	@Override
-	public default ListObject Sort(ListObject listobj){
-		ArrayList<String> list = listobj.GetList();
-		Collections.sort(list);
-		listobj.setList(list);
-		return listobj;
+	public ListObject Sort(ListObject list){
+		ArrayList<String> arrlist = list.GetList();
+		Collections.sort(arrlist);
+		list.setList(arrlist);
+		return list;
 	}
 }

@@ -7,14 +7,8 @@ import org.jling.megaport.MegaportSort.ListObject;
 public interface SortingAlgorithm {
 	
 	
-	public default ListObject Sort(ListObject list){
-		return list;
-	}
+	ListObject Sort(ListObject list);
 	
 	
-	public default double GetTimeTaken(ArrayList<String> list) {
-		double ttaken =0.0;
-		return ttaken;
-	}
 	
 }
