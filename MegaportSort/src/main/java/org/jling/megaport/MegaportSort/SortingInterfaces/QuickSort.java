@@ -32,7 +32,7 @@ public class QuickSort implements SortingAlgorithm {
 		 int bottom = (low - 1);
 		
 		for (int i = low; i< high;i++) {
-			if(list.get(i).compareTo(pivot) < 0) {
+			if(list.get(i).compareToIgnoreCase(pivot) < 0) {
 				bottom++;
 				Swap(list,bottom,i);
 				

@@ -29,31 +29,40 @@ public class App
         // If there are no arguments, file used should be a demo file.
         if(count == 0) {
         	listobj= ListObjectReader("src/main/resources/DemoFile1.txt");
-        	filename = GetFileName("src/main/resources/DemoFile1.txt") + "-sorted.txt";
+        	filename = GetFileName("src/main/resources/DemoFile1.txt");
+        	
         	factory = new SortingFactory();
         	sortAlgo = factory.CreateSortAlgorithm("");
-        	
         	listobj=sortAlgo.Sort(listobj);
         	//System.out.println(listobj.toString());
-        	ListObjectPrinter(listobj,filename);
+        	ListObjectPrinter(listobj,"src/main/resources/DemoFile1.txt");
         	
         	
         // For more than one, sort algorithm can be chosen multiple arguments, sorting will occur for each file destination.
         }else if (count > 1) {
         	String algo = args[0];
+        	System.out.println(algo);
         	for (int i = 1; i< count; i++ ) {
         		listobj= ListObjectReader(args[i]);
-        		filename = GetFileName(args[i])+"-sorted.txt";
+        		filename = GetFileName(args[i]);
+        		
+        		factory = new SortingFactory();
+            	sortAlgo = factory.CreateSortAlgorithm(algo);
+            	listobj=sortAlgo.Sort(listobj);
             	
             	//System.out.println(listobj.toString());
             	ListObjectPrinter(listobj,filename);
         		
         	}
         	
-        //for one, default sort algorithm will be used.
+        //for one, default CollectionsSort algorithm will be used.
         }else {
         	listobj= ListObjectReader(args[0]);
-        	filename = GetFileName(args[0])+"-sorted.txt";
+        	filename = GetFileName(args[0]);
+        	
+        	factory = new SortingFactory();
+        	sortAlgo = factory.CreateSortAlgorithm("");
+        	listobj=sortAlgo.Sort(listobj);
         	
         	//System.out.println(listobj.toString());
         	ListObjectPrinter(listobj,filename);
@@ -64,21 +73,23 @@ public class App
     
     
     public static String GetFileName(String dir) {
-    	String[] dirArray = dir.split("/");
-    	int dirLength = dirArray.length;
-    	String currName;
-    	if(dirLength>0) {
-    		currName = dirArray[dirArray.length -1];
-    		dirArray= currName.split(".txt");
-    		currName = dirArray[0].trim();
-
+    	
+    	File f = new File(dir);
+    	String currName=f.getName();
+    	
+    	
+    	
+    	int lastPeriod = currName.lastIndexOf('.');
+    
+    	if(lastPeriod<= 0) {
+    		currName +="-sorted.txt";
     	}else {
-    		currName= dir;
-    		dirArray= currName.split(".txt");
-    		currName = dirArray[0].trim();
+    		currName = currName.substring(0, lastPeriod) +"-sorted"+ currName.substring( lastPeriod, currName.length()); 
     	}
+    	System.out.println(currName);
     	return currName;
     }
+    
     
     public static ListObject ListObjectReader(String directory) {
     	
@@ -114,7 +125,7 @@ public class App
     	ArrayList<String> list = listobj.GetList();
     	 BufferedWriter writer = null;
     	 try{
-    	      File fout = new File("output/"+filename);
+    	      File fout = new File("./output/"+filename);
     	      FileOutputStream fos = new FileOutputStream(fout);
 
     	      writer = new BufferedWriter(new OutputStreamWriter(fos));
