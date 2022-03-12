@@ -26,6 +26,9 @@ public class App
         	count++;
         }
         
+        File output= new File("./output");
+        output.mkdir();
+        
         // If there are no arguments, file used should be a demo file.
         if(count == 0) {
         	listobj= ListObjectReader("src/main/resources/DemoFile1.txt");
@@ -34,8 +37,8 @@ public class App
         	factory = new SortingFactory();
         	sortAlgo = factory.CreateSortAlgorithm("");
         	listobj=sortAlgo.Sort(listobj);
-        	//System.out.println(listobj.toString());
-        	ListObjectPrinter(listobj,"src/main/resources/DemoFile1.txt");
+     
+        	ListObjectPrinter(listobj,filename);
         	
         	
         // For more than one, sort algorithm can be chosen multiple arguments, sorting will occur for each file destination.

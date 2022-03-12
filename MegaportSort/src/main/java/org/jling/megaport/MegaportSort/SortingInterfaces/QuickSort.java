@@ -9,6 +9,7 @@ public class QuickSort implements SortingAlgorithm {
 
 	@Override
 	public ListObject Sort(ListObject list) {
+		System.out.println("quicksort has been run.");
 		int high = list.GetLength()-1;
 		
 		arrList= list.GetList();

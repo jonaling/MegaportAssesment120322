@@ -12,6 +12,11 @@ public class ListObject {
 		this.linecount = 0;
 	}
 	
+	public ListObject (ArrayList<String> list) {
+		this.list=list;
+		this.linecount = list.size();
+	}
+	
 	public void Add(String item) {
 		list.add(item);
 		this.linecount++;
