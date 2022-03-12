@@ -35,6 +35,17 @@ public class AppTest
     	
     }
     
+    //test response for actual test file using collection sort
+    public void TestFileCollectionSort() {
+    	
+    }
+    
+    //test response for actual test file using quick-sort
+    public void TestFileQuickSort() {
+    	
+    }
+    
+    
     
     
 
