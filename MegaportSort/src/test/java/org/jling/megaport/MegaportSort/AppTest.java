@@ -45,7 +45,10 @@ public class AppTest
     	
     }
     
-    
+    //test for file with no output
+    public void TestEmptyFile() {
+    	
+    }
     
     
 
