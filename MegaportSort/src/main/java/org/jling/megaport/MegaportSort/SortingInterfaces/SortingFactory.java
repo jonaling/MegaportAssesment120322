@@ -1,13 +1,11 @@
 package org.jling.megaport.MegaportSort.SortingInterfaces;
 
 public class SortingFactory {
-	public SortingAlgorithm createSortAlgorithm(String chosen) {
-		if(chosen ==null || chosen.isEmpty()){
-			return null;
-		}else if(chosen.equals("QuickSort")) {
-			
+	public SortingAlgorithm CreateSortAlgorithm(String chosen) {
+		if(chosen.toLowerCase().equals("quicksort")) {
+			return new QuickSort();
 		}else {
-			return new
+			return new CollectionsSort();
 		}
 		
 	}

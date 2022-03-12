@@ -8,17 +8,19 @@ import java.io.FileReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
-/**
- * Hello world!
- *
- */
+import org.jling.megaport.MegaportSort.SortingInterfaces.SortingAlgorithm;
+import org.jling.megaport.MegaportSort.SortingInterfaces.SortingFactory;
+
+
 public class App 
 {
     public static void main( String[] args )
     {
         int count = 0;
-        ListObject listobj ;
+        ListObject listobj;
         String filename;
+        SortingAlgorithm sortAlgo;
+        SortingFactory factory;
         //Count number of arguments
         for(String s: args) {
         	count++;
@@ -27,8 +29,11 @@ public class App
         // If there are no arguments, file used should be a demo file.
         if(count == 0) {
         	listobj= ListObjectReader("src/main/resources/DemoFile1.txt");
-        	filename = GetFileName("src/main/resources/DemoFile1.txt")+"-sorted.txt";
+        	filename = GetFileName("src/main/resources/DemoFile1.txt") + "-sorted.txt";
+        	factory = new SortingFactory();
+        	sortAlgo = factory.CreateSortAlgorithm("");
         	
+        	listobj=sortAlgo.Sort(listobj);
         	//System.out.println(listobj.toString());
         	ListObjectPrinter(listobj,filename);
         	
