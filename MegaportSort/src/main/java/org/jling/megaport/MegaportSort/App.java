@@ -12,7 +12,7 @@ import org.jling.megaport.MegaportSort.SortingInterfaces.SortingAlgorithm;
 import org.jling.megaport.MegaportSort.SortingInterfaces.SortingFactory;
 
 
-public class App 
+public class App
 {
     public static void main( String[] args )
     {
@@ -34,9 +34,21 @@ public class App
         factory = new SortingFactory();
         
         // If there are no arguments, file used should be a demo file.
-        if(count == 0) {
-        	listobj= ListObjectReader("src/main/resources/DemoFile1.txt");
-        	filename = GetFileName("src/main/resources/DemoFile1.txt");
+        if(count == 0 ||count == 1) {
+        	String dir= "src/main/resources/DemoFile1.txt";
+        	if(count ==1) {
+        		dir = args[0];
+        	}
+        	
+        	listobj= ListObjectReader(dir);
+        	filename = GetFileName(dir);
+        	
+        	sortAlgo = factory.CreateSortAlgorithm(algo);
+         	
+        	listobj=sortAlgo.Sort(listobj);
+         	ListObjectPrinter(listobj,filename);
+         	System.out.println("Finished: created "+ filename);
+        	
        	
         // For more than one, sort algorithm can be chosen multiple arguments, sorting will occur for each file destination.
         }else if (count > 1) {
@@ -45,20 +57,21 @@ public class App
         	for (int i = 1; i< count; i++ ) {
         		listobj= ListObjectReader(args[i]);
         		filename = GetFileName(args[i]);
+        		
+        		sortAlgo = factory.CreateSortAlgorithm(algo);
+        	    
+        		listobj=sortAlgo.Sort(listobj);
+        	    ListObjectPrinter(listobj,filename);
+        	    System.out.println("run number: "+i);
+        	    System.out.println("Finished: created "+ filename);
 
         	}
         	
-        //for one, default CollectionsSort algorithm will be used.
+     
         }else {
-        	listobj= ListObjectReader(args[0]);
-        	filename = GetFileName(args[0]);
-
+        	System.out.println("Count is less than 1. Exiting.");
         }
-        sortAlgo = factory.CreateSortAlgorithm(algo);
-    	listobj=sortAlgo.Sort(listobj);
-  
-    	ListObjectPrinter(listobj,filename);
-    	System.out.println("Finished: created "+ filename);
+       
    
         
     }
