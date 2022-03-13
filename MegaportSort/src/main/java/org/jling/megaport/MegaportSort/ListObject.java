@@ -18,11 +18,20 @@ public class ListObject {
 	}
 	
 	public void Add(String item) {
-		list.add(item);
+		this.list.add(item);
 		this.linecount++;
 	}
 	
-	public void setList(ArrayList<String> list) {
+	public void Set( int index,String item) {
+		this.list.set(index,item);
+	}
+	
+	public String Get(int index) {
+		return this.list.get(index);
+	}
+	
+	
+	public void SetList(ArrayList<String> list) {
 		this.list= list;
 		this.linecount = list.size();
 		
@@ -36,7 +45,7 @@ public class ListObject {
 		return linecount;
 	}
 	
-	public String toString() {
+	public String ToString() {
 		return list.toString();
 	}
 	

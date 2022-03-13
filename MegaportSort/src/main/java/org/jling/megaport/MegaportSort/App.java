@@ -17,10 +17,13 @@ public class App
     public static void main( String[] args )
     {
         int count = 0;
-        ListObject listobj;
-        String filename;
+       
+       
         SortingAlgorithm sortAlgo;
         SortingFactory factory;
+        String algo = "";
+        String filename="";
+        ListObject listobj= null;
         //Count number of arguments
         for(String s: args) {
         	count++;
@@ -28,49 +31,35 @@ public class App
         
         File output= new File("./output");
         output.mkdir();
+        factory = new SortingFactory();
         
         // If there are no arguments, file used should be a demo file.
         if(count == 0) {
         	listobj= ListObjectReader("src/main/resources/DemoFile1.txt");
         	filename = GetFileName("src/main/resources/DemoFile1.txt");
-        	
-        	factory = new SortingFactory();
-        	sortAlgo = factory.CreateSortAlgorithm("");
-        	listobj=sortAlgo.Sort(listobj);
-     
-        	ListObjectPrinter(listobj,filename);
-        	
-        	
+       	
         // For more than one, sort algorithm can be chosen multiple arguments, sorting will occur for each file destination.
         }else if (count > 1) {
-        	String algo = args[0];
-        	System.out.println(algo);
+        	algo = args[0];
+
         	for (int i = 1; i< count; i++ ) {
         		listobj= ListObjectReader(args[i]);
         		filename = GetFileName(args[i]);
-        		
-        		factory = new SortingFactory();
-            	sortAlgo = factory.CreateSortAlgorithm(algo);
-            	listobj=sortAlgo.Sort(listobj);
-            	
-            	//System.out.println(listobj.toString());
-            	ListObjectPrinter(listobj,filename);
-        		
+
         	}
         	
         //for one, default CollectionsSort algorithm will be used.
         }else {
         	listobj= ListObjectReader(args[0]);
         	filename = GetFileName(args[0]);
-        	
-        	factory = new SortingFactory();
-        	sortAlgo = factory.CreateSortAlgorithm("");
-        	listobj=sortAlgo.Sort(listobj);
-        	
-        	//System.out.println(listobj.toString());
-        	ListObjectPrinter(listobj,filename);
+
         }
-        
+        sortAlgo = factory.CreateSortAlgorithm(algo);
+    	listobj=sortAlgo.Sort(listobj);
+  
+    	ListObjectPrinter(listobj,filename);
+    	System.out.println("Finished: created "+ filename);
+   
         
     }
     

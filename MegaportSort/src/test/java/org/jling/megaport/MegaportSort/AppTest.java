@@ -6,51 +6,105 @@ import java.io.InputStream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
 import org.jling.megaport.MegaportSort.SortingInterfaces.SortingAlgorithm;
 import org.jling.megaport.MegaportSort.SortingInterfaces.SortingFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.apache.commons.io.FileUtils;
+import org.junit.jupiter.api.Timeout;
 
 
 public class AppTest
 {
-	protected static void DeleteDirectory(String filedir) {
-		File dir = new File(filedir);
-		File[] contents = dir.listFiles();
-		for (File file : contents) {
-			file.delete();
-		}
-	}
 	
-	protected SortingFactory factory;
+	
+	protected static SortingFactory factory;
 	protected String[] args;
 	protected ArrayList<String> list1;
 	protected ArrayList<String> list2;
 	protected ListObject listobj1;
 	protected SortingAlgorithm sorter;
 	
-	@BeforeEach
-	 void BeforeEachTests() {
-		DeleteDirectory("./output");
+	@BeforeAll
+	static void Setup() {
+
 		factory = new SortingFactory();
+		
 	}
 	
 	
+	
+    @Test
+    public void TestListObjectGet() {
+    	String[] strArray = {"ABC","123"};
+    	list1 = new ArrayList<String>(Arrays.asList(strArray));
+    	listobj1 = new ListObject(list1);
+    	
+    	Assertions.assertEquals(listobj1.Get(0),"ABC");
+    	Assertions.assertEquals(listobj1.Get(1),"123");
+    }
     
-	@Test
-    public void NoFileTest() {
-    	args = new String[0];
-    	App.main(args);
-    	File file=new File("./output/DemoFile1-sorted.txt");
-    	Assertions.assertTrue(!file.isDirectory() && file.getName().equalsIgnoreCase("DemoFile1-sorted.txt"));
+    
+    
+    @Test
+    public void TestListObjectSet() {
+    	String[] strArray = {"ABC","123"};
+    	list1 = new ArrayList<String>(Arrays.asList(strArray));
+    	listobj1 = new ListObject(list1);
+    	listobj1.Set(0, "Godrick");
+    	Assertions.assertEquals(listobj1.Get(0),"Godrick");
+    	Assertions.assertEquals(listobj1.Get(1),"123");
+    }
+    
+    @Test
+    public void TestListObjectAdd() {
+    	String[] strArray = {"ABC","123"};
+    	
+    	listobj1 = new ListObject();
+    	listobj1.Add("ABC");
+    	listobj1.Add("123");
+    	Assertions.assertEquals(listobj1.Get(0),"ABC");
+    	Assertions.assertEquals(listobj1.Get(1),"123");
     }
 
+    @Test
+    public void TestListObjectGetLength() {
+    	
+    	
+    	listobj1 = new ListObject();
+    	listobj1.Add("ABC");
+    	listobj1.Add("123");
+    	Assertions.assertEquals(listobj1.GetLength(),2);
+    	listobj1.Add("doreme");
+    	Assertions.assertEquals(listobj1.GetLength(),3);
+    }
+	
+    @Test
+    public void TestListObjectGetList() {
+    	String[] strArray = {"ABC","123"};
+    	list1 = new ArrayList<String>(Arrays.asList(strArray));
+    	listobj1 = new ListObject(list1);
+    	ArrayList<String> list2= listobj1.GetList();
+    	
+    	Assertions.assertEquals(list2,list1);
+   
+    }
+    
+    @Test
+    public void TestListObjectSetList() {
+    	String[] strArray = {"ABC","123"};
+    	list1 = new ArrayList<String>(Arrays.asList(strArray));
+    	listobj1 = new ListObject();
+    	listobj1.SetList(list1);
+    	
+    	Assertions.assertEquals(listobj1.Get(0),"ABC");
+    	Assertions.assertEquals(listobj1.Get(1),"123");
+   
+    }
+	
     //test response for demo file using collection sort
 	@Test
+	@Timeout(1)
     public void TestCollectionSortAlgo() {
 		String[] strArray ={"Batman"
 				,"Spiderman"
@@ -80,6 +134,7 @@ public class AppTest
     
     //test response for demo file using quick-sort
 	@Test
+	@Timeout(1)
     public void TestQuickSortAlgo() {
 		String[] strArray ={"Batman"
 				,"Spiderman"
@@ -106,48 +161,6 @@ public class AppTest
 		Assertions.assertEquals(list2,list1);
     	
     }
-    
-    //test response for actual test file using collection sort
-	@Test
-    public void TestFileCollectionSort() {
-		String[] args = {"src/test/resources/test1.out"};
-		App.main(args);
-		File file1= new File("./output/test1-sorted.out");
-		File file2 = new File("src/test/resources/test1-sorted.out");
-		Boolean result;
-		try{
-			result = FileUtils.contentEquals(file1,file2);
-		}catch(Exception e){
-			e.printStackTrace();
-			result = false;
-		}
-		
-		Assertions.assertTrue(result);
-    }
-    
-    //test response for actual test file using quick-sort
-	@Test
-    public void TestFileQuickSort() {
-    	String[] args = {"src/test/resources/test2.in"};
-		App.main(args);
-		File file1= new File("./output/test2-sorted.in");
-		File file2 = new File("src/test/resources/test2-sorted.in");
-		Boolean result;
-		try{
-			result = FileUtils.contentEquals(file1,file2);
-		}catch(Exception e){
-			e.printStackTrace();
-			result = false;
-		}
-		
-		Assertions.assertTrue(result);
-    }
-    
-    //test for file with no output
-    public void TestEmptyFile() {
-    	
-    }
-    
   
 
   

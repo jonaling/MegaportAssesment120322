@@ -11,7 +11,7 @@ public class CollectionsSort implements SortingAlgorithm {
 	public ListObject Sort(ListObject list){
 		ArrayList<String> arrlist = list.GetList();
 		Collections.sort(arrlist,String.CASE_INSENSITIVE_ORDER);
-		list.setList(arrlist);
+		list.SetList(arrlist);
 		return list;
 	}
 }
