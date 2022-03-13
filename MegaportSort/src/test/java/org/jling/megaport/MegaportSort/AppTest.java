@@ -6,6 +6,9 @@ import java.io.InputStream;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+
+import org.jling.megaport.MegaportSort.SortingInterfaces.CollectionsSort;
+import org.jling.megaport.MegaportSort.SortingInterfaces.QuickSort;
 import org.jling.megaport.MegaportSort.SortingInterfaces.SortingAlgorithm;
 import org.jling.megaport.MegaportSort.SortingInterfaces.SortingFactory;
 import org.junit.jupiter.api.Assertions;
@@ -101,11 +104,41 @@ public class AppTest
     	Assertions.assertEquals(listobj1.Get(1),"123");
    
     }
+    
+    @Test
+	@Timeout(1)
+    public void TestCollectionSortAlgo() {
+		String[] strArray ={"Batman"
+				,"Spiderman"
+				,"Peter Parker"
+				,"Bruce Wayne"
+				, "1324"
+				, ".net"
+				, "c#"
+				,"java"};
+		list1 =  new ArrayList<String>(Arrays.asList(strArray));
+		listobj1 = new ListObject(list1);
+		sorter = new CollectionsSort();
+		listobj1 =sorter.Sort(listobj1);
+		list1=listobj1.GetList();
+		String[] resultArray ={".net"
+				,"1324"
+				,"Batman"
+				,"Bruce Wayne"
+				,"c#"
+				,"java"
+				,"Peter Parker"
+				,"Spiderman"};
+		list2= new ArrayList<String> (Arrays.asList(resultArray));
+		Assertions.assertEquals(list2,list1);
+    	
+    }
+    
 	
     //test response for demo file using collection sort
 	@Test
 	@Timeout(1)
-    public void TestCollectionSortAlgo() {
+    public void FactoryTestCollectionSortAlgo() {
 		String[] strArray ={"Batman"
 				,"Spiderman"
 				,"Peter Parker"
@@ -131,11 +164,41 @@ public class AppTest
 		Assertions.assertEquals(list2,list1);
     	
     }
+	
+	 //test response for demo file using quick-sort
+		@Test
+		@Timeout(1)
+	    public void TestQuickSortAlgo() {
+			String[] strArray ={"Batman"
+					,"Spiderman"
+					,"Peter Parker"
+					,"Bruce Wayne"
+					, "1324"
+					, ".net"
+					, "c#"
+					,"java"};
+			list1 =  new ArrayList<String>(Arrays.asList(strArray));
+			listobj1 = new ListObject(list1);
+			sorter = new QuickSort();
+			listobj1 =sorter.Sort(listobj1);
+			list1=listobj1.GetList();
+			String[] resultArray ={".net"
+					,"1324"
+					,"Batman"
+					,"Bruce Wayne"
+					,"c#"
+					,"java"
+					,"Peter Parker"
+					,"Spiderman"};
+			list2= new ArrayList<String> (Arrays.asList(resultArray));
+			Assertions.assertEquals(list2,list1);
+	    	
+	    }
     
     //test response for demo file using quick-sort
 	@Test
 	@Timeout(1)
-    public void TestQuickSortAlgo() {
+    public void FactoryTestQuickSortAlgo() {
 		String[] strArray ={"Batman"
 				,"Spiderman"
 				,"Peter Parker"
