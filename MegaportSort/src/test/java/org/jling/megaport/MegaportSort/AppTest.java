@@ -1,8 +1,6 @@
 package org.jling.megaport.MegaportSort;
 
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -61,8 +59,7 @@ public class AppTest
     
     @Test
     public void TestListObjectAdd() {
-    	String[] strArray = {"ABC","123"};
-    	
+ 	
     	listobj1 = new ListObject();
     	listobj1.Add("ABC");
     	listobj1.Add("123");

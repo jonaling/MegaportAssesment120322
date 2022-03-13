@@ -51,11 +51,6 @@ public class QuickSort implements SortingAlgorithm {
 	
 	
 	
-	
-	
-	
-	
-	
 	private void Quicksort(ArrayList<String> list,int low,int high) {
 		if(low< high) {
 			int pi = Partition(list,low,high);
