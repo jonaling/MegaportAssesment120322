@@ -91,7 +91,7 @@ public class App
     	}else {
     		currName = currName.substring(0, lastPeriod) +"-sorted"+ currName.substring( lastPeriod, currName.length()); 
     	}
-    	System.out.println(currName);
+    	
     	return currName;
     }
     
