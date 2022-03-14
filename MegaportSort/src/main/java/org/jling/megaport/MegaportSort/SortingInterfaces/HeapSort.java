@@ -12,12 +12,12 @@ public class HeapSort implements SortingAlgorithm{
 		}
 		
 		for (int i = length/2-1;i>=0;i--) {
-			HeapSorter(list,length, i);
+			Heapsort(list,length, i);
 		}
 		
 		for(int j = length-1; j>=0;j--) {
 			Swap(list,0,j);
-			HeapSorter(list,j,0);
+			Heapsort(list,j,0);
 		}
 		
 		
@@ -25,7 +25,7 @@ public class HeapSort implements SortingAlgorithm{
 	}
 	
 	
-	private void HeapSorter(ListObject list,int length, int i) {
+	private void Heapsort(ListObject list,int length, int i) {
 		int left = 2*i+1;
 		int right = 2*i+2;
 		int highest= i;
@@ -40,7 +40,7 @@ public class HeapSort implements SortingAlgorithm{
 		
 		if(highest != i) {
 			Swap(list,i,highest);
-			HeapSorter(list,length,highest);
+			Heapsort(list,length,highest);
 		}
 			
 	}
