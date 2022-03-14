@@ -8,9 +8,12 @@ This is a simple Maven/Java application for sorting names read from a .txt file 
 2. Run on command line: mvn clean install
 3. Run mvn test for unit tests and mvn verify for both unit tests and integration tests.
 4. Open up target folder and run : java -jar target/MegaportSort-0.0.1-SNAPSHOT.jar
+
 	-To run a custom file, you can add the file path as the first argument. (eg. java -jar target/MegaportSort-0.0.1-SNAPSHOT.jar D:/Desktop/test1.txt)
+	
 	-To run using a different sorting algorithm, please use the first argument as the sort type. The second argument onwards will once again be file paths.
 	(eg. java -jar target/MegaportSort-0.0.1-SNAPSHOT.jar quicksort D:/Desktop/test1.txt D:/Desktop/test2.txt)
+	
 	-Currently the default uses collections sort and there is **quicksort** and **heapsort** as well.
 	
 
@@ -22,7 +25,9 @@ Changes that were made to run the Maven build are setting the project -> JDK com
 
 Steps include:
 - Changing project -> JDK parameter to 1.5 to 9.
+- 
 - Changing the execution environment ot JavaSE-9.
+- 
 - Adding maven compiler source and target 9 in the properties.
 
 
