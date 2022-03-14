@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.jling.megaport.MegaportSort.SortingInterfaces.CollectionsSort;
+import org.jling.megaport.MegaportSort.SortingInterfaces.HeapSort;
 import org.jling.megaport.MegaportSort.SortingInterfaces.QuickSort;
 import org.jling.megaport.MegaportSort.SortingInterfaces.SortingAlgorithm;
 import org.jling.megaport.MegaportSort.SortingInterfaces.SortingFactory;
@@ -208,6 +209,64 @@ public class AppTest
 		listobj1 = new ListObject(list1);
 		sorter = factory.CreateSortAlgorithm("quicksort");
 		 listobj1 =sorter.Sort(listobj1);
+		list1=listobj1.GetList();
+		String[] resultArray ={".net"
+				,"1324"
+				,"Batman"
+				,"Bruce Wayne"
+				,"c#"
+				,"java"
+				,"Peter Parker"
+				,"Spiderman"};
+		list2= new ArrayList<String> (Arrays.asList(resultArray));
+		Assertions.assertEquals(list2,list1);
+    	
+    }
+	
+	@Test
+	@Timeout(1)
+    public void TestHeapSortAlgo() {
+		String[] strArray ={"Batman"
+				,"Spiderman"
+				,"Peter Parker"
+				,"Bruce Wayne"
+				, "1324"
+				, ".net"
+				, "c#"
+				,"java"};
+		list1 =  new ArrayList<String>(Arrays.asList(strArray));
+		listobj1 = new ListObject(list1);
+		sorter = new HeapSort();
+		listobj1 =sorter.Sort(listobj1);
+		list1=listobj1.GetList();
+		String[] resultArray ={".net"
+				,"1324"
+				,"Batman"
+				,"Bruce Wayne"
+				,"c#"
+				,"java"
+				,"Peter Parker"
+				,"Spiderman"};
+		list2= new ArrayList<String> (Arrays.asList(resultArray));
+		Assertions.assertEquals(list2,list1);
+    	
+    }
+	
+	@Test
+	@Timeout(1)
+    public void FactoryTestHeapSortAlgo() {
+		String[] strArray ={"Batman"
+				,"Spiderman"
+				,"Peter Parker"
+				,"Bruce Wayne"
+				, "1324"
+				, ".net"
+				, "c#"
+				,"java"};
+		list1 =  new ArrayList<String>(Arrays.asList(strArray));
+		listobj1 = new ListObject(list1);
+		sorter = factory.CreateSortAlgorithm("heapsort");
+		listobj1 =sorter.Sort(listobj1);
 		list1=listobj1.GetList();
 		String[] resultArray ={".net"
 				,"1324"

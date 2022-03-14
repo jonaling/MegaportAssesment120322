@@ -12,9 +12,9 @@ public class QuickSort implements SortingAlgorithm {
 		System.out.println("quicksort has been run.");
 		int high = list.GetLength()-1;
 
-		//arrList= list.GetList();
+
 		Quicksort(list,0,high);
-		//list.setList(arrList);
+		
 
 		return list;
 	}
