@@ -1,6 +1,6 @@
 # MegaportAssesment120322
 This is a simple Maven/Java application for sorting names read from a .txt file and out putting a file with sorted names by alphabetical order.
-<<<<<<< HEAD
+
 =======
 
 --quick run on cmd--
@@ -11,7 +11,7 @@ This is a simple Maven/Java application for sorting names read from a .txt file 
 	-To run a custom file, you can add the file path as the first argument. (eg. java -jar target/MegaportSort-0.0.1-SNAPSHOT.jar D:/Desktop/test1.txt)
 	-To run using a different sorting algorithm, please use the first argument as the sort type. The second argument onwards will once again be file paths.
 	(eg. java -jar target/MegaportSort-0.0.1-SNAPSHOT.jar quicksort D:/Desktop/test1.txt D:/Desktop/test2.txt)
-	-Currently the default uses collections sort and there is a quicksort as well.
+	-Currently the default uses collections sort and there is **quicksort** and **heapsort** as well.
 	
 
 ---Maven set-up---
@@ -33,5 +33,5 @@ The maven-jar-plugin was added to add a manifest with a pointer to the main App.
 ---Class structures---
 Currently, all items in the text files are stored as ListObjects in the program.
 
-All sorting algorithms implement the SortingAlgoritm interface and are used via SortingFactory class. This follows a factory design pattern.
->>>>>>> master
+All sorting algorithms implement the SortingAlgorithm interface and are used via SortingFactory class. This follows a factory design pattern.
+
