@@ -51,7 +51,7 @@ public class App
         	
        	
         // For more than one, sort algorithm can be chosen multiple arguments, sorting will occur for each file destination.
-        }else if (count > 1) {
+        }else {
         	algo = args[0];
 
         	for (int i = 1; i< count; i++ ) {
@@ -66,10 +66,6 @@ public class App
         	    System.out.println("Finished: created "+ filename);
 
         	}
-        	
-     
-        }else {
-        	System.out.println("Count is less than 1. Exiting.");
         }
        
    
