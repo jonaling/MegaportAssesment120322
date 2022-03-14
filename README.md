@@ -25,9 +25,9 @@ Changes that were made to run the Maven build are setting the project -> JDK com
 
 Steps include:
 - Changing project -> JDK parameter to 1.5 to 9.
-- 
+
 - Changing the execution environment ot JavaSE-9.
-- 
+
 - Adding maven compiler source and target 9 in the properties.
 
 
